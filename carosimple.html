@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co caro</title>
+</head>
+<body>
+    <h3>Cờ Caro</h3>
+    <p id="carogame">
+    <script>
+        let b = document.getElementById('carogame');
+        //getElement ở id carogame
+        let board = [];
+        // tạo mảng rỗng
+        let data ='';
+        // tao biến rỗng
+        for (let i = 0; i < 5; i++) {
+            board[i] = new Array(0, 0, 0, 0, 0);
+            //vòng for chạy 5 lần, mỗi lần tạo ra 1 mảng mới với giá trị cho trước
+        }
+        for (let i = 0; i<5;i++) {
+            data+="<br>";
+            //vòng for chạy 5 lần (hàng ngang)
+                for (let j = 0; j<5;j++) {
+                    data += board[i][j];
+                    //vòng for chạy 5 lần hàng dọc
+                }
+        }
+        data += "<input type='button' value='Change Value' onclick='changeValue()'>"
+        //tạo input button để gọi function changeValue()
+        b.innerHTML = data;
+        //Thay đổi nội dung HTML của phần tử b, ở đây là thẻ p có id = carogame
+        function changeValue() {
+            let positionX = prompt("X: ");
+            let positionY = prompt("Y: ");
+            data = "";
+            board[positionX][positionY] = "x";
+            //thay đổi phần từ có vị trí board[x][y] từ 0 thành x
+            for (let i = 0; i< 5; i++) {
+                data += "<br>";
+                //thực hiền vòng lặp 5 lần (hàng ngang sau đó xuống dòng)
+                for (let j = 0; j<5; j++) {
+                    data+= board[i][j];
+                    //vòng for chạy 5 lần hàng dọc
+                }
+            }
+            data += "<input type='button' value='Change Value' onclick='changeValue()'>"
+            b.innerHTML = data;
+        }
+    </script>
+</body>
+</html>
